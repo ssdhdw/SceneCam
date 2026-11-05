@@ -6,8 +6,8 @@ android {
         applicationId 'studio.scenecam'
         minSdk 28
         targetSdk 35
-        versionCode 10
-        versionName '0.9.0'
+        versionCode 11
+        versionName '0.9.1'
         testInstrumentationRunner 'studio.scenecam.GridFixtureProbe'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }

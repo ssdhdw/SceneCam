@@ -2,7 +2,7 @@
 
 An OBS-inspired Android scene composer with an LSPosed virtual camera and virtual microphone. Combine visual and audio sources in one app, then expose the result to selected applications through Java camera and audio API hooks.
 
-Current version: **0.9.0**. This is an experimental implementation, not a system Camera HAL or Audio HAL. The Android app currently has a Russian-language interface; this repository's documentation is in English.
+Current version: **0.9.1**. This is an experimental implementation, not a system Camera HAL or Audio HAL. The Android app currently has a Russian-language interface; this repository's documentation is in English.
 
 ## Features
 
