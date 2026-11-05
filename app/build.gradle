@@ -11,5 +11,18 @@ android {
         testInstrumentationRunner 'studio.scenecam.GridFixtureProbe'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    signingConfigs {
+        release {
+            if (System.getenv('SCENECAM_KEYSTORE')) {
+                storeFile file(System.getenv('SCENECAM_KEYSTORE'))
+                storePassword System.getenv('SCENECAM_STORE_PASSWORD')
+                keyAlias 'scenecam'
+                keyPassword System.getenv('SCENECAM_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        release { signingConfig signingConfigs.release }
+    }
 }
 dependencies { compileOnly 'de.robv.android.xposed:api:82' }

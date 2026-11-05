@@ -35,7 +35,7 @@ The APK targets API 35 and is compiled against API 36.
 
 ## Installation and usage
 
-1. Build and install the APK, or use an APK attached to a repository release when available.
+1. Download the signed APK from [Releases](https://github.com/ssdhdw/SceneCam/releases/latest), or build the app yourself.
 2. Enable SceneCam in LSPosed and select the receiving applications in its scope. Do not add the Android framework just to use this app.
 3. Open SceneCam and add visual/audio sources. Choose **Crop** or **Fit** to preserve proportions; **Stretch** deliberately changes them.
 4. Start the scene and wait for the preview. Physical camera permission is needed only for a visible device-camera source. Physical microphone permission is requested only for an enabled microphone source.
@@ -69,6 +69,16 @@ sh gradlew :app:assembleDebug :app:lintDebug
 ```
 
 Output: `app/build/outputs/apk/debug/app-debug.apk`. The project uses Gradle 8.11.1 and Android Gradle Plugin 8.10.1. Local SDK/JDK installations, generated builds, credentials, and third-party test APKs are excluded from Git.
+
+## Automated APK builds and releases
+
+[Build APK and publish release](https://github.com/ssdhdw/SceneCam/actions/workflows/apk.yml) builds a signed release APK and runs release lint on every push to `master`, every `v*` tag, and manual dispatch. Ordinary builds are available as Actions artifacts for 30 days. Version tags must match `versionName` in `app/build.gradle`.
+
+To publish, update `versionName` and `versionCode`, then push a tag such as `v0.9.0`. Alternatively, run the workflow manually with **publish** enabled. Successful release runs attach `SceneCam-<version>.apk` and `SHA256SUMS.txt` to GitHub Releases. An existing release is never silently overwritten.
+
+The persistent signing key and passwords are stored in repository Actions secrets: `ANDROID_KEYSTORE_BASE64`, `ANDROID_STORE_PASSWORD`, and `ANDROID_KEY_PASSWORD`; the alias is `scenecam`. They are not committed to the repository. Fork maintainers must supply their own signing secrets before using this workflow. Signing secrets are not exposed through a pull-request workflow.
+
+Release APKs use a different signing certificate from earlier locally built debug APKs. Uninstall the debug build before installing the first release APK; this removes its app data, so record your settings first. Subsequent official releases retain the release signing identity. Local unsigned release builds require the signing environment variables configured in `app/build.gradle` to become installable APKs.
 
 ## Validation
 
