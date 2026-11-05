@@ -4,6 +4,8 @@ This document distinguishes observed behavior from unsupported or untested claim
 
 ## Environment and build
 
+The signed 0.9.1 APK was also built and linted on GitHub Actions, published automatically to Releases, downloaded back, and verified with apksigner. The downloaded SHA-256 matched the published SHA256SUMS.txt. Its release certificate SHA-256 is `7a6d2a2553866130dd13025176d2a9814351c1b857238893e50acd8498943988`. This verifies packaging/signing/delivery; it is not a new receiving-app runtime test.
+
 - JDK 17, Gradle 8.11.1, Android Gradle Plugin 8.10.1, compile SDK 36, target SDK 35, minimum SDK 28.
 - `:app:assembleDebug`, `:app:lintDebug`, `:app:assembleDebugAndroidTest`, and `:probe:assembleDebug` passed for the 0.9 work.
 - Runtime: API 37 Google Play x86_64 Android emulator, JingMatrix LSPatch 1.2 build 487 debug.
