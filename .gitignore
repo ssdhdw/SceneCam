@@ -1,0 +1,24 @@
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+.tools/
+
+# Local credentials and signing material
+.env
+.env.*
+*.jks
+*.keystore
+*.p12
+*.pem
+__pycache__/
+
+# Keep raw runtime diagnostics local; publish only synthetic grid evidence.
+docs/runtime-tests/*
+!docs/runtime-tests/v9-square-grid.png
+!docs/runtime-tests/v9-grid-before.png
+!docs/runtime-tests/v9-round-grid-camera1-640x480-90.png
+!docs/runtime-tests/v9-round-grid-decoded.png
+!docs/runtime-tests/v9-grid-results.txt
+!docs/runtime-tests/v9-round-grid.mp4
